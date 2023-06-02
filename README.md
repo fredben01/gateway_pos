@@ -1,6 +1,8 @@
 Gateway POS
 ============
 
+Proyecto desarrollado con koa framework.
+
 Para ejecutar localmente debe seguir los siguientes pasos:
 
  1. Abrir la consola
@@ -45,7 +47,21 @@ npm install
 ~~~
 npm run dev
 ~~~
- 12.  Compilar para producción
+
+
+Build para producción
+============
+
+ 1.  Compilar para producción
 ~~~
 npm run build
+~~~
+
+
+Test
+============
+
+ 1.  Ejecutar los test
+~~~
+
 ~~~

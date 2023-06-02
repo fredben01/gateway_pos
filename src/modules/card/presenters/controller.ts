@@ -26,9 +26,10 @@ export default class {
       token,
     } = data.properties();
 
+    ctx.status = 200;
     ctx.body = { card_number, expiration_month, expiration_year, email, token }
   
-    return next();
+    return ctx.body;
   }
 
   async listOne(ctx: Context, next: Next) {
@@ -38,19 +39,19 @@ export default class {
     if (data === TokenError.EXPIRED_TOKEN) {
       ctx.status = 401;
       ctx.body = {message: "Your token has expired, please login again"}
-      return next();
+      return ctx;
     }
 
     if(data === TokenError.INVALID_PK) {
       ctx.status = 401;
       ctx.body = {message: "Your PK does not belong to this context"}
-      return next();
+      return ctx;
     }
 
     if(data === TokenError.NOT_EXIST) {
       ctx.status = 401;
       ctx.body = {message: "Not Exist"}
-      return next();
+      return ctx;
     }
 
 
@@ -66,7 +67,8 @@ export default class {
 
     ctx.status = 200;
     ctx.body = {card_number, expiration_month, expiration_year, email, token}
-    return next();
+    // return next();
+    return ctx.body;
 
   }
 

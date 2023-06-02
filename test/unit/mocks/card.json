@@ -1,0 +1,11 @@
+[
+  {
+    "email": "example@yahoo.es",
+    "card_number": 4111111111111111,
+    "cvv": 1234,
+    "expiration_year": "2023",
+    "expiration_month": "09",
+    "pk": "dso0@^DG",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6ImRzbzBAXkRHIiwiaWF0IjoxNjg1NzE2ODY0LCJleHAiOjE2ODU3MTY5MjR9.JunDLjBdcIcjnPy8grt2mHnpMbOHojkwXlxz-WJcQVU"
+  }
+]

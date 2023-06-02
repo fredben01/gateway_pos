@@ -4,3 +4,4 @@ env.yaml
 test.http
 cache/
 build
+coverage/
