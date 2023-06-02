@@ -2,7 +2,7 @@ import { IsEmail, IsInt, IsNotEmpty, IsString, MaxLength, MinLength, Matches, Mi
 import { IsValidCustomExpirationYear } from '../../../shared/custom-validators/custom-expire-year.validator';
 import { IsValidCustomMonth } from '../../../shared/custom-validators/custom-months-valid.validator';
 
-export class TokenInsertValidator {
+export class CardInsertValidator {
   @IsInt()
   @IsNotEmpty()
   @Min(1000000000000, { message: "Must be between 13 and 16 digits" })

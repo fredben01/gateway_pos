@@ -1,9 +1,9 @@
 import { Context, Next } from "koa";
-import { TokenInsertValidator } from "../validators/token-insert.validator";
+import { CardInsertValidator } from "../validators/card-insert.validator";
 import { validate } from "class-validator";
 import { IError } from "../../../../helpers/ierror";
 
-interface Token {
+interface Card {
   card_number?: number; 
   cvv?: number;
   expiration_month?: string;
@@ -11,8 +11,8 @@ interface Token {
   email?: string;
 }
 
-export class TokenMiddleware {
-  static async ValidateToken(ctx: Context, next: Next) {
+export class CardMiddleware {
+  static async ValidateCard(ctx: Context, next: Next) {
     // if ( !ctx.request.body ) return next();
 
     const {
@@ -21,10 +21,10 @@ export class TokenMiddleware {
       expiration_month,
       expiration_year,
       email
-    }:Token = ctx.request.body!;
+    }:Card = ctx.request.body!;
 
-    const tokenInsertValidator = new TokenInsertValidator();
-    Object.assign(tokenInsertValidator, {
+    const cardInsertValidator = new CardInsertValidator();
+    Object.assign(cardInsertValidator, {
       card_number,
       cvv,
       expiration_month,
@@ -32,7 +32,7 @@ export class TokenMiddleware {
       email
     })
 
-    const errors = await validate(tokenInsertValidator);
+    const errors = await validate(cardInsertValidator);
     if(errors.length > 0) {
       const listErrors = errors
                           .map((err: any) => err.constraints)
@@ -61,4 +61,4 @@ export class TokenMiddleware {
 export const MiddlewareInsert: ((
   ctx: Context,
   next: Next
-) => Promise<any>)[] = [TokenMiddleware.ValidateToken]
+) => Promise<any>)[] = [CardMiddleware.ValidateCard]

@@ -3,7 +3,7 @@ import bodyparser from 'koa-bodyparser';
 import json from 'koa-json';
 import Router from 'koa-router';
 // import ExampleRouter from './modules/example/interfaces/example.route';
-import TokenRouter from './modules/token/presenters/router';
+import CardRouter from './modules/card/presenters/router';
 import HandlerErrors from './helpers/errors';
 
 const router = new Router();
@@ -35,7 +35,7 @@ class App {
     // post.get('/1', ctx => ctx.body = "Hola Mundo");
     // router.use('/example', post.routes());
     // router.use('/example', ExampleRouter);
-    router.use('/tokens', TokenRouter);
+    router.use('/tokens', CardRouter);
   }
 
 //   var forums = new Router();
