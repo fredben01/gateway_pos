@@ -61,7 +61,11 @@ npm run build
 Test
 ============
 
- 1.  Ejecutar los test
+ 1.  Ejecutar los test (unitaros)
 ~~~
-
+npm run test:unit
+~~~
+ 2. Ejecutar live test
+~~~
+npm run test:watch
 ~~~
