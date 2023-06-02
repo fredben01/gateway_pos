@@ -2,3 +2,5 @@ node_modules
 .vscode
 env.yaml
 test.http
+cache/
+build
