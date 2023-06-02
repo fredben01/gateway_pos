@@ -1,5 +1,6 @@
 import { CardRepository } from '../domain/card.repository';
 import Card from '../domain/card';
+import { CardService } from './card.service';
 
 export default class CardApplication {
   constructor(
@@ -7,6 +8,8 @@ export default class CardApplication {
   ) {}
 
   insert(card: Card) {
+    const token = CardService.signin(card.properties().pk);
+    card.setToken(token);
     return this.cardRepository.insert(card);
   }
 

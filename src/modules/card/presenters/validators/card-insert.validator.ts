@@ -1,12 +1,14 @@
 import { IsEmail, IsInt, IsNotEmpty, IsString, MaxLength, MinLength, Matches, Min, Max, IsIn } from 'class-validator';
 import { IsValidCustomExpirationYear } from '../../../shared/custom-validators/custom-expire-year.validator';
 import { IsValidCustomMonth } from '../../../shared/custom-validators/custom-months-valid.validator';
+import { IsValidCustomLuhn } from '../../../shared/custom-validators/custom-luhn.validator';
 
 export class CardInsertValidator {
   @IsInt()
   @IsNotEmpty()
   @Min(1000000000000, { message: "Must be between 13 and 16 digits" })
   @Max(9999999999999999, { message: "Must be between 13 and 16 digits" })
+  @IsValidCustomLuhn()
   card_number!: number;
   @IsInt()
   @IsNotEmpty()

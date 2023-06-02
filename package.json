@@ -12,6 +12,7 @@
   "author": "freddy",
   "license": "ISC",
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/koa": "^2.13.6",
     "@types/koa-bodyparser": "^4.3.10",
     "@types/koa-json": "^2.0.20",

@@ -5,6 +5,7 @@ interface CardRequired {
   expiration_month: string;
   expiration_year: string;
   email: string;
+  pk: string;
   token: string;
 }
 
@@ -16,6 +17,7 @@ export default class {
   private expiration_month!: string;
   private expiration_year!: string;
   private email!: string;
+  private pk!: string;
   private token!: string;
 
   constructor(cardProperties: CardProperties) {
@@ -29,7 +31,12 @@ export default class {
       expiration_month: this.expiration_month,
       expiration_year: this.expiration_year,
       email: this.email,
+      pk: this.pk,
       token: this.token,
     };
+  }
+
+  setToken(token: string) {
+    this.token = token;
   }
 }

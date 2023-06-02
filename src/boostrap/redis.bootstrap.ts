@@ -32,7 +32,7 @@ export default class RedisBootstrap extends Bootstrap {
   }
 
   static async set(key: string, value: string) {
-    await redisClient.set(key, value, "EX", 1000 * 60);
+    await redisClient.set(key, value, "EX", 60);
   }
 
   static async clear(prefix: string = "") {
