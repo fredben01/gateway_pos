@@ -1,0 +1,5 @@
+export enum TokenError {
+  NOT_EXIST = "NOT_EXIST",
+  INVALID_PK = "INVALID_PK",
+  EXPIRED_TOKEN = "EXPIRED_TOKEN",
+}

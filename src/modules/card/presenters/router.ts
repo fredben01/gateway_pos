@@ -5,6 +5,7 @@ import { CardRepository } from "../domain/card.repository";
 import CardInfrastructure from "../infrastructure/card.infrastructure";
 import CardApplication from "../application/card.application";
 import { PkMiddleware } from "./middleware/pk.middleware";
+import { TokenMiddleware } from "./middleware/token.middleware";
 
 
 const infrastructure: CardRepository = new CardInfrastructure();
@@ -23,7 +24,7 @@ class TokenRouter {
     // this.koaRouter.post('/tokenization', ...MiddlewareInsert, controller.tokenization);
     // this.koaRouter.get('/token', controller.token);
     this.koaRouter.post('/tokenization', ...MiddlewareInsert, PkMiddleware.isValidPk, controller.insert);
-    this.koaRouter.get('/token', controller.getToken);
+    this.koaRouter.get('/token', TokenMiddleware.isValidToken, controller.listOne);
   }
 }
 
