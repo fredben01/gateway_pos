@@ -7,18 +7,16 @@ export class TokenMiddleware {
     const { authorization } = ctx.request.headers;
   
     if(!authorization) {
-      const error: IError = new Error("Unauthorized");
-      error.status = 401;
-      ctx.body = error;
-      return next();
+      ctx.status = 401;
+      ctx.body = {message: "Unauthorized"};
+      return ctx;
     } 
     else {
       const [bearer, token] = authorization.split(" ");
       if(bearer.toLocaleLowerCase() !== "bearer" || !token) {
-        const error: IError = new Error("Unauthorized");
-        error.status = 401;
-        ctx.body = error;
-        return next();
+        ctx.status = 401;
+        ctx.body = {message: "Unauthorized"};
+        return ctx;
       }
 
       ctx.token = token;

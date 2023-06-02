@@ -10,24 +10,28 @@ export class PkMiddleware {
     const { authorization } = ctx.request.headers;
   
     if(!authorization) {
-      const error: IError = new Error("Unauthorized");
-      error.status = 401;
-      ctx.body = error;
-      return next();
+      ctx.status = 401;
+      ctx.body = {
+        message: "Unauthorized"
+      };
+      return ctx;
     } 
     else {
       const [bearer, pk] = authorization.split(" ");
       if(bearer.toLocaleLowerCase() !== "bearer" || !pk) {
-        const error: IError = new Error("Unauthorized");
-        error.status = 401;
-        ctx.body = error;
-        return next();
+        ctx.status = 401;
+        ctx.body = {
+          message: "Unauthorized"
+        };
+        return ctx;
       }
 
       if (pk !== env.PK) {
-        const error: IError = new Error("Invalid PK");
-        ctx.body = error;
-        return next();
+        ctx.status = 401;
+        ctx.body = {
+          message: "Invalid PK"
+        };
+        return ctx;
       }
 
       ctx.pk = pk;

@@ -37,7 +37,13 @@ export default class {
 
     if (data === TokenError.EXPIRED_TOKEN) {
       ctx.status = 401;
-      ctx.body = {message: "Expire Token"}
+      ctx.body = {message: "Your token has expired, please login again"}
+      return next();
+    }
+
+    if(data === TokenError.INVALID_PK) {
+      ctx.status = 401;
+      ctx.body = {message: "Your PK does not belong to this context"}
       return next();
     }
 
@@ -47,11 +53,6 @@ export default class {
       return next();
     }
 
-    if(data === TokenError.INVALID_PK) {
-      ctx.status = 401;
-      ctx.body = {message: "Invalid PK"}
-      return next();
-    }
 
     const newData = this.createCard(data)
     
