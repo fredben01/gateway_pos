@@ -9,40 +9,28 @@ export default class {
   }
 
   async insert(ctx: Context, next: Next) {
+
+    // console.log(ctx.pk);
     const createCard = this.createCard(ctx.request.body);
-    
-    const { authorization } = ctx.request.headers;
-    
-    if(!authorization) {
-      const error: IError = new Error("Unauthorized");
-      error.status = 401;
-      ctx.body = error;
-      return next();
-    } else {
-      const [bearer, pk] = authorization.split(" ");
-      if(bearer.toLocaleLowerCase() !== "bearer" || !pk) {
-        const error: IError = new Error("Unauthorized");
-        error.status = 401;
-        ctx.body = error;
-        return next();
-      }
+    const pk = ctx.pk;
 
-      const card = new Card({...createCard, pk });
-      const data = await this.application.insert(card);
+    const card = new Card({...createCard, pk });
+    const data = await this.application.insert(card);
 
-      const {
-        card_number,
-        expiration_month,
-        expiration_year,
-        email,
-        token,
-      } = data.properties();
+    const {
+      card_number,
+      expiration_month,
+      expiration_year,
+      email,
+      token,
+    } = data.properties();
 
-      ctx.body = { card_number, expiration_month, expiration_year, email, token }
-    }
-
+    ctx.body = { card_number, expiration_month, expiration_year, email, token }
+  
     return next();
   }
+
+  async getToken() {}
 
   private createCard(data: any) {
     return {

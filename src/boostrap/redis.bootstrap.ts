@@ -2,8 +2,10 @@ import IORedis from 'ioredis';
 
 import { AppService } from './app.service';
 import { Bootstrap } from './bootstrap';
+import yenv from 'yenv';
 
 let redisClient: IORedis;
+const env = yenv();
 
 export default class RedisBootstrap extends Bootstrap {
   
@@ -32,7 +34,7 @@ export default class RedisBootstrap extends Bootstrap {
   }
 
   static async set(key: string, value: string) {
-    await redisClient.set(key, value, "EX", 60);
+    await redisClient.set(key, value, "EX", env.REDIS_EXPIRATION);
   }
 
   static async clear(prefix: string = "") {
