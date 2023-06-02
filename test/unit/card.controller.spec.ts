@@ -19,11 +19,7 @@ describe("card.controller", () => {
 
   it ("List One", async() => {
     // Act
-    // req.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6ImRzbzBAXkRHIiwiaWF0IjoxNjg1NzE2ODY0LCJleHAiOjE2ODU3MTY5MjR9.JunDLjBdcIcjnPy8grt2mHnpMbOHojkwXlxz-WJcQVU";
-    
     const data = await cardController.listOne(req,res);
-    // console.log({data})
-
     // Assert
     mockCardApplication.assertListOne(data);
 

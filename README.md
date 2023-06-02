@@ -70,4 +70,4 @@ npm run test:unit
 npm run test:watch
 ~~~
 
-## NOTA: La confiugración que se muestra pone el token con expiración en 1 min y el valor del dato en Redis en 1 min, luego de ese tiempo se eliminará de la BD Redis
+### **NOTA**: La confiugración que se muestra pone el token con expiración en 1 min y el valor del dato en Redis en 1 min, luego de ese tiempo se eliminará de la BD Redis
