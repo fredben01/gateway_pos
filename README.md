@@ -7,10 +7,10 @@ Para ejecutar localmente debe seguir los siguientes pasos:
 
  1. Abrir la consola
  2. Ubicarse en la carpeta para clonar el repositorio
- 3. Clonar repositorio (YOUR_USER: ponga su usuario de github)
+ 3. Clonar repositorio (Ejemplo)
 
 ~~~
-git clone https://github.com/[YOUR_USER]/gateway_pos.git
+git clone https://github.com/fredben01/gateway_pos.git
 ~~~
 
  4. Ingresar a la carpeta del proyecto
@@ -35,7 +35,7 @@ development:
   TOKEN_EXPIRATION: 60
 ~~~
  8. Guardar y cerrar el archivo
- 9. Instale typescript de manera global
+ 9. Vuelva a la consola. Instale typescript de manera global (Podría usarlo de manera local con: npm i typescript, pero se pierden algunas características interesantes)
 ~~~
 npm i -g typescript
 ~~~
@@ -69,3 +69,5 @@ npm run test:unit
 ~~~
 npm run test:watch
 ~~~
+
+## NOTA: La confiugración que se muestra pone el token con expiración en 1 min y el valor del dato en Redis en 1 min, luego de ese tiempo se eliminará de la BD Redis
